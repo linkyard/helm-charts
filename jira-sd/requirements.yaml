@@ -1,4 +1,4 @@
 dependencies:
-  - name: postgresql
-    version: 0.3.0
-    repository: https://kubernetes-charts.storage.googleapis.com/
+  - name: postgres
+    version: 0.2.0
+    repository: http://charts.linkyard.ch

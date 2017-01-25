@@ -1,0 +1,13 @@
+JIRA Service Desk is now available at https://{{ template "hostname" . }}.
+
+Please go to https://{{ template "hostname" . }} and complete the setup.
+- Choose "I'll setup it myself"
+- Choose "My own Database" and enter
+  - Database Type: PostgreSQL
+  - Hostname: {{ template "postgres.fullname" . }}
+  - Port: 5432 (default)
+  - Database: postgres
+  - User: postgres
+  - Password: <use: `kubectl get secret {{ template "postgres.fullname" . }} --namespace {{ .Release.Namespace }} -o jsonpath="{.data.password}" | base64 -D` to get the password>
+  - Schema: public
+- Set the remaining setting as desired

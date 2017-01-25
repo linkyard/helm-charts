@@ -15,7 +15,18 @@ We truncate at 24 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "host" -}}
-{{- $defaultHost := printf "%s.test.linkyard.ch" .Release.Name -}}
-{{- default $defaultHost .Values.hostname -}}
+
+{{- define "postgres.fullname" -}}
+{{- printf "%s-%s" .Release.Name "sd-postgres" | trunc 24 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "labels" -}}
+app: "{{ .Release.Name }}"
+component: "{{ .Chart.Name }}"
+component_version: "{{ .Chart.Version}}"
+heritage: "{{ .Release.Service }}"
+{{- end -}}
+
+{{- define "hostname" -}}
+{{ default (printf "%s.%s" .Release.Name .Values.hostbase) .Values.hostname }}
 {{- end -}}

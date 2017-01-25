@@ -3,19 +3,16 @@ kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
   labels:
-    app: {{ template "fullname" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+{{ include "labels" . | indent 4 }}
   annotations:
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
-    - {{ template "host" . }}
+    - {{ template "hostname" . }}
     secretName: ingress-tls
   rules:
-  - host: {{ template "host" . }}
+  - host: {{ template "hostname" . }}
     http:
       paths:
       - path: /
