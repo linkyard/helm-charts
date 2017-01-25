@@ -1,0 +1,60 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+{{ include "labels" . | indent 4 }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+{{ include "labels" . | indent 8 }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: msiegenthaler/keycloak:2.3.0.Final-ssl
+        imagePullPolicy: Always
+        env:
+        - name: POSTGRES_PORT_5432_TCP_ADDR
+          value: {{ template "postgres.fullname" . }}
+        - name: POSTGRES_PORT_5432_TCP_PORT
+          value: "5432"
+        - name: POSTGRES_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postgres.fullname" . }}
+              key: username
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postgres.fullname" . }}
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postgres.fullname" . }}
+              key: password
+        - name: KEYCLOAK_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: admin-user
+        - name: KEYCLOAK_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: admin-password
+        ports:
+        - name: http
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+        resources:
+{{ toYaml .Values.resources | indent 10 }}

@@ -1,0 +1,4 @@
+dependencies:
+  - name: postgres
+    version: 0.2.0
+    repository: http://127.0.0.1:8879/charts
