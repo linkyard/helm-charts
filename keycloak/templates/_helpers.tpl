@@ -16,7 +16,7 @@ We truncate at 24 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{- define "postgres.fullname" -}}
-{{- printf "%s-%s" .Release.Name "postgres" | trunc 24 | trimSuffix "-" -}}
+{{- printf "%s-%s" .Release.Name "kc-postgres" | trunc 24 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "labels" -}}
