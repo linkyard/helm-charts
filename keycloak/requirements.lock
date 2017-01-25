@@ -1,6 +1,0 @@
-dependencies:
-- name: postgres
-  repository: http://127.0.0.1:8879/charts
-  version: 0.2.0
-digest: sha256:7f2aed48a90ae99b94560142ecf4c409f7e9b9f7f38d0eed103f9ab15b235684
-generated: 2017-01-25T12:29:49.91615703+01:00

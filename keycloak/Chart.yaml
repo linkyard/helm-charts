@@ -1,4 +1,0 @@
-apiVersion: v1
-name: keycloak
-description: Keycloak IAM with postgres.
-version: 0.1.0

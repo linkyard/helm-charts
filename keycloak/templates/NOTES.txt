@@ -1,6 +1,0 @@
-Keycloak is now available at https://{{ template "hostname" . }}
-
-Go to https://{{ template "hostname" . }}/auth/admin/ and enter
-  admin
-  {{ default (cat .Release.Name .Chart.Name | sha256sum) .Values.adminPassword}}
-to log in and set the realms up.
