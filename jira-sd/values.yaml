@@ -33,6 +33,7 @@ resources:
 # Database configuration
 postgres:
   nameOverride: sd-postgres
+  version: 9.3.15
   persistence:
     ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
     ## Default: volume.alpha.kubernetes.io/storage-class: default
