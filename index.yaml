@@ -1,7 +1,24 @@
 apiVersion: v1
 entries:
   jira-sd:
-  - created: 2017-01-25T17:28:57.638895123+01:00
+  - created: 2017-01-26T23:42:33.654874405+01:00
+    description: Atlassian JIRA with Service Desk running on persistent storage with
+      Postgres.
+    digest: 47761ec30a0ace91706ed0a7a3522f136ced800c3fc0a8f6de3cd06d9ef2c433
+    engine: gotpl
+    home: https://github.com/linkyard/helm-charts
+    keywords:
+    - Atlassian
+    - JIRA
+    - Service Desk
+    maintainers:
+    - email: mario.siegenthaler@linkyard.ch
+      name: Mario Siegenthaler
+    name: jira-sd
+    urls:
+    - http://charts.linkyard.ch/jira-sd-0.2.1.tgz
+    version: 0.2.1
+  - created: 2017-01-26T23:42:33.652419203+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 22d002d5e1f93e48dde3e770b23716e23d68a739d178c089d48aaefb147c7231
@@ -20,7 +37,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.2.0.tgz
     version: 0.2.0
-  - created: 2017-01-25T17:28:57.638507894+01:00
+  - created: 2017-01-26T23:42:33.651797657+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 94b356336281afce11805ee893cfff61569bc3599f5d85b7a64feec31918d1da
@@ -41,7 +58,7 @@ entries:
     version: 0.0.1
   keycloak:
   - apiVersion: v1
-    created: 2017-01-25T17:28:57.640309561+01:00
+    created: 2017-01-26T23:42:33.655936635+01:00
     description: Keycloak IAM with postgres.
     digest: f5d7172ccca53057420ed846fc71bd1270a4ff9468f3a36f74e3cb9bfd02b315
     name: keycloak
@@ -49,7 +66,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v1
-    created: 2017-01-25T17:28:57.640037234+01:00
+    created: 2017-01-26T23:42:33.655385063+01:00
     description: Keycloak IAM with postgres.
     digest: 7b71ba5148a01ea0b8bc08688f7df0b8b8d2bfcbd69dea4f4897a483d9724122
     name: keycloak
@@ -58,11 +75,11 @@ entries:
     version: 0.1.0
   postgres:
   - apiVersion: v1
-    created: 2017-01-25T17:28:57.640475307+01:00
+    created: 2017-01-26T23:42:33.656346345+01:00
     description: Postgres database with persistent storage (master only)
     digest: 2afaa58a1352e23994cb98711080e7b0975a78f69371e4d9e79910c04a46e638
     name: postgres
     urls:
     - http://charts.linkyard.ch/postgres-0.2.0.tgz
     version: 0.2.0
-generated: 2017-01-25T17:28:57.637696787+01:00
+generated: 2017-01-26T23:42:33.650295142+01:00
