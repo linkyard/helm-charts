@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ template "fullname" . }}
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+{{ include "labels" . | indent 4 }}
 spec:
   selector:
     app: {{ .Release.Name }}
-    component: keycloak
+    component: "{{ default .Chart.Name .Values.nameOverride }}"
   ports:
   - name: http
     port: 80

@@ -1,6 +1,6 @@
 dependencies:
 - name: postgres
   repository: http://charts.linkyard.ch
-  version: 0.2.1
-digest: sha256:7824cf51412957271d172cb9379635d1340a480ea9293d63286e8b49e105b18d
-generated: 2017-01-27T21:31:33.040552+01:00
+  version: 0.2.2
+digest: sha256:2d1f861a4b306c9c6e3042dc2571de2193329a7fc36a89a847a29df583ecaa28
+generated: 2017-01-27T21:55:15.928055889+01:00
