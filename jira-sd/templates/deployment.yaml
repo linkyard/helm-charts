@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-{{ include "labels" . | indent 8 }}
+{{ include "template.labels" . | indent 8 }}
     spec:
       containers:
       - name: jira

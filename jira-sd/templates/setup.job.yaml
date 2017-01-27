@@ -3,13 +3,14 @@ kind: Job
 metadata:
   name: {{ template "fullname" . }}-setup-{{ randAlphaNum 5 | lower }}
   labels:
+    job: {{ template "fullname" . }}-setup
 {{ include "labels" . | indent 4 }}
 spec:
   template:
     metadata:
       name: {{ template "fullname" . }}-setup-{{ randAlphaNum 5 | lower }}
       labels:
-{{ include "labels" . | indent 8 }}
+{{ include "template.labels" . | indent 8 }}
     spec:
       restartPolicy: OnFailure
       containers:

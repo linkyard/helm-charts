@@ -21,3 +21,8 @@ component: "{{ default .Chart.Name .Values.nameOverride }}"
 component_version: "{{ .Chart.Version}}"
 heritage: "{{ .Release.Service }}"
 {{- end -}}
+
+{{- define "template.labels" -}}
+app: "{{ .Release.Name }}"
+component: "{{ default .Chart.Name .Values.nameOverride }}"
+{{- end -}}

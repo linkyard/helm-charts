@@ -27,6 +27,11 @@ component_version: "{{ .Chart.Version}}"
 heritage: "{{ .Release.Service }}"
 {{- end -}}
 
+{{- define "template.labels" -}}
+app: "{{ .Release.Name }}"
+component: "{{ default .Chart.Name .Values.nameOverride }}"
+{{- end -}}
+
 {{- define "hostname" -}}
 {{ default (printf "%s.%s" .Release.Name .Values.ingress.hostbase) .Values.ingress.hostname }}
 {{- end -}}
