@@ -1,1 +1,5 @@
-TODO
+Use the following credentials to log in:
+  User:     postgres
+  Password: {{ default (cat .Release.Name (default .Chart.Name .Values.nameOverride) | sha256sum) .Values.password }}
+
+The database is available as the service {{ template "fullname" . }}
