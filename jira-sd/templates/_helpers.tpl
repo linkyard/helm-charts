@@ -22,7 +22,7 @@ We truncate at 24 chars because some Kubernetes name fields are limited to this 
 
 {{- define "labels" -}}
 app: "{{ .Release.Name }}"
-component: "{{ .Chart.Name }}"
+component: "{{ default .Chart.Name .Values.nameOverride }}"
 component_version: "{{ .Chart.Version}}"
 heritage: "{{ .Release.Service }}"
 {{- end -}}
