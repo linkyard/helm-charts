@@ -1,11 +1,13 @@
 # Password for the keycloak admin user
 #adminPassword:
 
-# Hostname for the ingress
-#hostname:
-
-#Only used if hostname is not set. Suffix for the release name to find the hostname
-hostbase: test.linkyard.ch
+ingress:
+  #Set to true to create an ingress
+  enabled: false
+  # Hostname for the ingress
+  #hostname:
+  #Only used if hostname is not set. Suffix for the release name to find the hostname
+  hostbase: test.linkyard.ch
 
 postgres:
   nameOverride: kc-postgres

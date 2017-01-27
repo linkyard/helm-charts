@@ -7,11 +7,13 @@ adminDisplayName: Administrator
 #adminPassword:
 #adminEmail:
 
-# Hostname for the ingress
-#hostname:
-
-#Only used if hostname is not set. Suffix for the release name to find the hostname
-hostbase: test.linkyard.ch
+ingress:
+  #Set to true to create an ingress
+  enabled: false
+  # Hostname for the ingress
+  #hostname:
+  #Only used if hostname is not set. Suffix for the release name to find the hostname
+  hostbase: test.linkyard.ch
 
 #License key for JIA. Optional, a trial license will be fetched if not specified
 #license:

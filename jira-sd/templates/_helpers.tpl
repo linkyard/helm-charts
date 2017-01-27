@@ -28,5 +28,5 @@ heritage: "{{ .Release.Service }}"
 {{- end -}}
 
 {{- define "hostname" -}}
-{{ default (printf "%s.%s" .Release.Name .Values.hostbase) .Values.hostname }}
+{{ default (printf "%s.%s" .Release.Name .Values.ingress.hostbase) .Values.ingress.hostname }}
 {{- end -}}
