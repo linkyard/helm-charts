@@ -1,7 +1,24 @@
 apiVersion: v1
 entries:
   jira-sd:
-  - created: 2017-01-27T22:36:26.571300076+01:00
+  - created: 2017-01-27T22:39:44.574334116+01:00
+    description: Atlassian JIRA with Service Desk running on persistent storage with
+      Postgres.
+    digest: 4027c7d9c20c48753502ed2c14136e351bbd2a09cf1aeea8fe224a729411a042
+    engine: gotpl
+    home: https://github.com/linkyard/helm-charts
+    keywords:
+    - Atlassian
+    - JIRA
+    - Service Desk
+    maintainers:
+    - email: mario.siegenthaler@linkyard.ch
+      name: Mario Siegenthaler
+    name: jira-sd
+    urls:
+    - http://charts.linkyard.ch/jira-sd-0.4.5.tgz
+    version: 0.4.5
+  - created: 2017-01-27T22:39:44.573877659+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 0e8d626bc5a622bee58884a5bdd4438a1772ba63569734bb9e1cdbe81939134d
@@ -18,7 +35,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.4.4.tgz
     version: 0.4.4
-  - created: 2017-01-27T22:36:26.570941742+01:00
+  - created: 2017-01-27T22:39:44.572702903+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: bb805df89adb30382818fbd71c99a4e0cd7ddd69ce7e1afa974887fc7ce387d4
@@ -35,7 +52,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.4.3.tgz
     version: 0.4.3
-  - created: 2017-01-27T22:36:26.570536087+01:00
+  - created: 2017-01-27T22:39:44.571627356+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: d47e8ad568637864279336a0a2a4822cbe8df2ca84af5a3dadfad6f07f3bd8d7
@@ -52,7 +69,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.4.2.tgz
     version: 0.4.2
-  - created: 2017-01-27T22:36:26.569487594+01:00
+  - created: 2017-01-27T22:39:44.570354317+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: c86ea2a04234db670c585e0947b83c06cda0f860fc06e006b1cb5b52739cfda3
@@ -69,7 +86,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.4.1.tgz
     version: 0.4.1
-  - created: 2017-01-27T22:36:26.568680557+01:00
+  - created: 2017-01-27T22:39:44.569286099+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: d88c8db048353e461483ec487a62430bab6ca327f9c13cb1d7486ddd21fcf8bb
@@ -86,7 +103,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.4.0.tgz
     version: 0.4.0
-  - created: 2017-01-27T22:36:26.567871442+01:00
+  - created: 2017-01-27T22:39:44.568171583+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: f5d7ff636461a0f8bd6af8fd021d3405dbc785e845087d8c4810943009190635
@@ -103,7 +120,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.3.0.tgz
     version: 0.3.0
-  - created: 2017-01-27T22:36:26.566463898+01:00
+  - created: 2017-01-27T22:39:44.566989413+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 47761ec30a0ace91706ed0a7a3522f136ced800c3fc0a8f6de3cd06d9ef2c433
@@ -120,7 +137,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.2.1.tgz
     version: 0.2.1
-  - created: 2017-01-27T22:36:26.565971538+01:00
+  - created: 2017-01-27T22:39:44.566413358+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 22d002d5e1f93e48dde3e770b23716e23d68a739d178c089d48aaefb147c7231
@@ -139,7 +156,7 @@ entries:
     urls:
     - http://charts.linkyard.ch/jira-sd-0.2.0.tgz
     version: 0.2.0
-  - created: 2017-01-27T22:36:26.565363882+01:00
+  - created: 2017-01-27T22:39:44.564853575+01:00
     description: Atlassian JIRA with Service Desk running on persistent storage with
       Postgres.
     digest: 94b356336281afce11805ee893cfff61569bc3599f5d85b7a64feec31918d1da
@@ -160,7 +177,7 @@ entries:
     version: 0.0.1
   keycloak:
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.574720601+01:00
+    created: 2017-01-27T22:39:44.579152312+01:00
     description: Keycloak IAM with postgres.
     digest: ab7e8efea04eaab0bd4c9ea6c820140161c133f767850f049a34950723d44a4a
     name: keycloak
@@ -168,7 +185,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.3.4.tgz
     version: 0.3.4
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.574420127+01:00
+    created: 2017-01-27T22:39:44.578214515+01:00
     description: Keycloak IAM with postgres.
     digest: 689e4bbaf8a2893eefc78fdead39dbd9746bddb8a186088c1fed8900fbdf2043
     name: keycloak
@@ -176,7 +193,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.3.3.tgz
     version: 0.3.3
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.574100312+01:00
+    created: 2017-01-27T22:39:44.577566529+01:00
     description: Keycloak IAM with postgres.
     digest: ff6af663b4a534593a06a9113f406a2ddd2f7597b6e069ec76deeb9dd3642ca5
     name: keycloak
@@ -184,7 +201,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.3.2.tgz
     version: 0.3.2
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.573385446+01:00
+    created: 2017-01-27T22:39:44.576680801+01:00
     description: Keycloak IAM with postgres.
     digest: d1cc49b13dbc6a2d1f894340a00109a494c98aa391f3f413f06afb20e29be969
     name: keycloak
@@ -192,7 +209,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.3.1.tgz
     version: 0.3.1
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.572822485+01:00
+    created: 2017-01-27T22:39:44.57610402+01:00
     description: Keycloak IAM with postgres.
     digest: 86eb8d4efeb0a06e528f509408343a71522a1331c01b1656b2b9dc22d1a9c26d
     name: keycloak
@@ -200,7 +217,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.3.0.tgz
     version: 0.3.0
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.572391074+01:00
+    created: 2017-01-27T22:39:44.575596368+01:00
     description: Keycloak IAM with postgres.
     digest: f5d7172ccca53057420ed846fc71bd1270a4ff9468f3a36f74e3cb9bfd02b315
     name: keycloak
@@ -208,7 +225,7 @@ entries:
     - http://charts.linkyard.ch/keycloak-0.2.0.tgz
     version: 0.2.0
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.571870849+01:00
+    created: 2017-01-27T22:39:44.574989548+01:00
     description: Keycloak IAM with postgres.
     digest: 7b71ba5148a01ea0b8bc08688f7df0b8b8d2bfcbd69dea4f4897a483d9724122
     name: keycloak
@@ -217,7 +234,7 @@ entries:
     version: 0.1.0
   postgres:
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.576577483+01:00
+    created: 2017-01-27T22:39:44.580894718+01:00
     description: Postgres database with persistent storage (master only)
     digest: f4378c9c2dcf4855d7289052c5f005f9f02bd6cc44df1e49c6079b1d2782dd96
     name: postgres
@@ -225,7 +242,7 @@ entries:
     - http://charts.linkyard.ch/postgres-0.2.3.tgz
     version: 0.2.3
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.576377142+01:00
+    created: 2017-01-27T22:39:44.580709467+01:00
     description: Postgres database with persistent storage (master only)
     digest: 183bb00c2f17772e8083f69445d5881e3e866002738e5fc72d42592e651518a5
     name: postgres
@@ -233,7 +250,7 @@ entries:
     - http://charts.linkyard.ch/postgres-0.2.2.tgz
     version: 0.2.2
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.5756545+01:00
+    created: 2017-01-27T22:39:44.580163696+01:00
     description: Postgres database with persistent storage (master only)
     digest: e7e91ea3e428b8aa244c4f38225b39ddc0c38da25ca836ff67a1b0278b2dd746
     name: postgres
@@ -241,11 +258,11 @@ entries:
     - http://charts.linkyard.ch/postgres-0.2.1.tgz
     version: 0.2.1
   - apiVersion: v1
-    created: 2017-01-27T22:36:26.575195246+01:00
+    created: 2017-01-27T22:39:44.579634989+01:00
     description: Postgres database with persistent storage (master only)
     digest: 2afaa58a1352e23994cb98711080e7b0975a78f69371e4d9e79910c04a46e638
     name: postgres
     urls:
     - http://charts.linkyard.ch/postgres-0.2.0.tgz
     version: 0.2.0
-generated: 2017-01-27T22:36:26.564523178+01:00
+generated: 2017-01-27T22:39:44.563909142+01:00
