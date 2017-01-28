@@ -9,15 +9,16 @@ image_resource:
 
 inputs:
 - name: source-repo
-- name: updated-cart-repo
+- name: updated-chart-repo
 
 run:
   path: /bin/sh
-  dir: target-repo
+  dir: updated-chart-repo
   args:
   - -exec
   - |
     ls -la
+    ls -la ../source-repo
     helm init -c
     helm repo add linkyard http://charts.linkyard.ch
     for chart in ../source-repo/*/; do
