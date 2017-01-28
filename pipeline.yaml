@@ -24,6 +24,8 @@ jobs:
     file: source-repo/clone.yaml
   - task: package
     file: source-repo/package.yaml
+  - task: commit
+    file: source-repo/commit.yaml
   - put: chart-repo
     params:
       repository: updated-chart-repo
