@@ -12,7 +12,7 @@ resources:
   type: git
   source:
     uri: git@github.com:linkyard/helm-charts.git
-    branch: ci-test
+    branch: gh-pages
     private_key: {{private-repo-key}}
 
 jobs:
