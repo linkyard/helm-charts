@@ -14,27 +14,13 @@ resources:
     branch: ci-test
 
 jobs:
-
 - name: package
   plan:
   - get: source-repo
     trigger: true
   - get: chart-repo
-  - task: clone
-    file: source-repo/clone.yaml
   - task: package
     file: source-repo/package.yaml
-  - task: commit
-    file: source-repo/commit.yaml
   - put: chart-repo
     params:
       repository: updated-chart-repo
-
-# - name: publish
-#   plan:
-#   - get: source-repo
-#     passed: [package]
-#     trigger: true
-#   - put: source-repo
-#     params:
-#       repository: target-repo

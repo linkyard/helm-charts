@@ -4,28 +4,42 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: soxhub/helm
-    tag: v2.1.3
+    repository: linkyard/helm
+    tag: latest
 
 inputs:
 - name: source-repo
+- name: chart-repo
+
+outputs:
 - name: updated-chart-repo
 
 run:
   path: /bin/sh
-  dir: updated-chart-repo
   args:
   - -exec
   - |
-    ls -la
-    ls -la ../source-repo
+    echo "Cloning charts repo..."
+    git clone chart-repo updated-chart-repo
+
+    echo "Updating helm packages.."
+    cd updated-chart-repo
     helm init -c
     helm repo add linkyard http://charts.linkyard.ch
     for chart in ../source-repo/*/; do
-      echo Processing ${chart}...
+      echo "  Processing ${chart}..."
       rm -rf ${chart}/charts
       helm dependency update $chart
       helm package $chart
     done
+
+    echo "Indexing helm charts..."
     helm repo index . --url http://charts.linkyard.ch
-    ls -la
+
+    echo "Committing changes..."
+    git status
+    git add .
+    git config --global user.email "concourse-ci@linkyard.ch"
+    git config --global user.name "Concourse CI"
+    git commit -m "Updated charts."
+    echo "Done."
