@@ -7,7 +7,7 @@ resources:
     uri: https://github.com/linkyard/helm-charts.git
     branch: master
 
-- name: target-repo
+- name: chart-repo
   type: git
   source:
     uri: https://github.com/linkyard/helm-charts.git
@@ -19,9 +19,14 @@ jobs:
   plan:
   - get: source-repo
     trigger: true
-  - get: target-repo
+  - get: chart-repo
+  - task: clone
+    file: source-repo/clone.yaml
   - task: package
     file: source-repo/package.yaml
+  - put: chart-repo
+    params:
+      repository: updated-chart-repo
 
 # - name: publish
 #   plan:

@@ -9,9 +9,7 @@ image_resource:
 
 inputs:
 - name: source-repo
-
-outputs:
-- name: target-repo
+- name: updated-cart-repo
 
 run:
   path: /bin/sh
