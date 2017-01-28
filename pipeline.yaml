@@ -4,14 +4,16 @@ resources:
 - name: source-repo
   type: git
   source:
-    uri: https://github.com/linkyard/helm-charts.git
+    uri: git@github.com:linkyard/helm-charts.git
     branch: master
+    private_key: {{private-repo-key}}
 
 - name: chart-repo
   type: git
   source:
-    uri: https://github.com/linkyard/helm-charts.git
+    uri: git@github.com:linkyard/helm-charts.git
     branch: ci-test
+    private_key: {{private-repo-key}}
 
 jobs:
 - name: package
