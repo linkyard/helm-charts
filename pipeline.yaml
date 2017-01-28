@@ -1,0 +1,33 @@
+#Concourse CI build configuration
+---
+resources:
+- name: source-repo
+  type: git
+  source:
+    uri: https://github.com/linkyard/helm-charts.git
+    branch: master
+
+- name: target-repo
+  type: git
+  source:
+    uri: https://github.com/linkyard/helm-charts.git
+    branch: ci-test
+
+jobs:
+
+- name: package
+  plan:
+  - get: source-repo
+    trigger: true
+  - get: target-repo
+  - task: package
+    file: source-repo/package.yaml
+
+# - name: publish
+#   plan:
+#   - get: source-repo
+#     passed: [package]
+#     trigger: true
+#   - put: source-repo
+#     params:
+#       repository: target-repo
