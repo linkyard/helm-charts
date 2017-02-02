@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: msiegenthaler/keycloak:2.3.0.Final-ssl
+        image: msiegenthaler/keycloak:2.5.1.Final-ssl
         imagePullPolicy: Always
         env:
         - name: POSTGRES_PORT_5432_TCP_ADDR
