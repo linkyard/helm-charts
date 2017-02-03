@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: jira
-        image: cptactionhank/atlassian-jira-service-desk:{{ .Values.jiraVersion }}
+        image: {{ Values.image }}:{{ .Values.jiraVersion }}
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
         env:
         - name: X_PROXY_SCHEME
