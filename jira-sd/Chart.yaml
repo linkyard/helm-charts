@@ -1,5 +1,5 @@
 name: jira-sd
-version: 0.4.8
+version: 0.4.9
 description: Atlassian JIRA with Service Desk running on persistent storage with Postgres.
 keywords:
   - Atlassian
