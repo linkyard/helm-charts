@@ -43,12 +43,15 @@ spec:
             port: 8080
           initialDelaySeconds: 300
           timeoutSeconds: 120
+          periodSeconds: 30
           failureThreshold: 10
         readinessProbe:
           httpGet:
             path: /status
             port: 8080
-          initialDelaySeconds: 3
+          periodSeconds: 5
+          initialDelaySeconds: 10
+          failureThreshold: 30
           timeoutSeconds: 60
         resources:
 {{ toYaml .Values.resources | indent 10 }}
