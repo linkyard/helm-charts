@@ -10,6 +10,16 @@ spec:
     metadata:
       labels:
 {{ include "template.labels" . | indent 8 }}
+      annotations:
+        # Wait until postgres is ready before starting..
+        pod.beta.kubernetes.io/init-containers: '[
+            {
+                "name": "wait-for-postgres",
+                "image": "jwilder/dockerize:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "command": ["dockerize", "-wait", "tcp://{{ template "postgres.fullname" . }}:5432", "-timeout", "30s"]
+            }
+        ]'
     spec:
       containers:
       - name: jira
@@ -47,5 +57,9 @@ spec:
           mountPath: /var/atlassian/jira
       volumes:
       - name: data
+      {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "fullname" . }}
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}

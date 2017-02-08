@@ -5,7 +5,7 @@ metadata:
   labels:
 {{ include "labels" . | indent 4 }}
 data:
-  sender: {{ default .Values.adminEmail .Values.mail.from | quote }}
+  sender: "{{ default .Values.adminEmail .Values.mail.from }}"
   prefix: {{ .Values.mail.prefix | quote }}
   host: {{ .Values.mail.host | quote }}
   port: {{ .Values.mail.port | quote }}

@@ -5,7 +5,7 @@ title: Test Jira
 adminUser: admin
 adminDisplayName: Administrator
 #adminPassword:
-#adminEmail:
+adminEmail: noreply@dev.null
 
 ingress:
   #Set to true to create an ingress
@@ -47,6 +47,7 @@ imagePullPolicy: IfNotPresent
 
 
 persistence:
+  enabled: false
   storageClass: local
   size: 5Gi
 
@@ -66,8 +67,5 @@ postgres:
   nameOverride: sd-postgres
   version: 9.3.15
   persistence:
-    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
-    ## Default: volume.alpha.kubernetes.io/storage-class: default
-    ##
-    # storageClass: generic
+    enabled: false
     size: 1Gi
