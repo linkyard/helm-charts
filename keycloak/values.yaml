@@ -10,7 +10,7 @@ ingress:
   hostbase: test.linkyard.ch
 
 postgres:
-  nameOverride: kc-postgres
+  nameOverride: keycloak-pg
   #Set a database password
   password:
   #Database persistence settings

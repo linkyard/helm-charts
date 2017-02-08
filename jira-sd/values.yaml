@@ -64,7 +64,7 @@ resources:
 
 # Database configuration
 postgres:
-  nameOverride: sd-postgres
+  nameOverride: jira-pg
   version: 9.3.15
   persistence:
     enabled: false

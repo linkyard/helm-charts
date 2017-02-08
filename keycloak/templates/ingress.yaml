@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - {{ template "hostname" . }}
-    secretName: ingress-tls
+    secretName: {{ template "fullname" . }}
   rules:
   - host: {{ template "hostname" . }}
     http:
