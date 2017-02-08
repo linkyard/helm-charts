@@ -7,6 +7,8 @@ adminDisplayName: Administrator
 #adminPassword:
 adminEmail: noreply@dev.null
 
+runSetup: true
+
 ingress:
   #Set to true to create an ingress
   enabled: false
