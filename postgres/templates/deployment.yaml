@@ -11,7 +11,16 @@ spec:
       labels:
 {{ include "template.labels" . | indent 8 }}
       annotations:
+        # Allow for some time to mount the volumes and clear the lost+found
         pod.beta.kubernetes.io/init-containers: '[
+{{- if .Values.persistence.enabled }}
+            {
+                "name": "wait-a-bit",
+                "image": "busybox:1.25.0",
+                "imagePullPolicy": "IfNotPresent",
+                "command": ["sleep", "3"]
+            },
+{{- end -}}
             {
                 "name": "remove-lost-found",
                 "image": "busybox:1.25.0",
@@ -81,5 +90,9 @@ spec:
 
       volumes:
       - name: data
+      {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "fullname" . }}
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}

@@ -4,6 +4,8 @@ version: 9.6.1
 
 # persistence of the postgres data
 persistence:
+  # Use false to just use an empty dir
+  enabled: true
   storageClass: local
   size: 5Gi
 
