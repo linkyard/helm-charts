@@ -27,9 +27,9 @@ spec:
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
         env:
         - name: X_PROXY_SCHEME
-          value: {{- if .Values.ingress.ssl }}https{{- else }}http{{- end }}
+          value: {{ if .Values.ingress.ssl }}https{{ else }}http{{ end }}
         - name: X_PROXY_PORT
-          value: "{{- if .Values.ingress.ssl }}443{{- else }}80{{- end }}"
+          value: "{{ if .Values.ingress.ssl }}443{{ else }}80{{ end }}"
         - name: X_PATH
           value: /
         - name: CATALINA_OPTS
