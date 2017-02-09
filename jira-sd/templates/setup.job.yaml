@@ -16,13 +16,15 @@ spec:
       restartPolicy: OnFailure
       containers:
       - name: setup-jira
-        image: linkyard/setup-jira-instance:local
+        image: linkyard/setup-jira-instance:latest
         imagePullPolicy: Always
         env:
         - name: JIRA_URL
           value: {{ if .Values.ingress.ssl }}https://{{ else }}http://{{ end}}{{ template "hostname" . }}/
         - name: JIRA_TITLE
           value: {{ .Values.title | quote }}
+        - name: EXTERNAL_LOGIN
+          value: {{ .Values.externalLoginUrl | quote }}
         - name: LICENSE
           value: {{ .Values.license | quote}}
         - name: ATLASSIAN_USER
