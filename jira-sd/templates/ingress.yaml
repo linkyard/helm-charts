@@ -5,13 +5,17 @@ metadata:
   name: {{ template "fullname" . }}
   labels:
 {{ include "labels" . | indent 4 }}
+{{- if .Values.ingress.ssl }}
   annotations:
     kubernetes.io/tls-acme: "true"
+{{- end }}
 spec:
+{{- if .Values.ingress.ssl }}
   tls:
   - hosts:
     - {{ template "hostname" . }}
-    secretName: {{ template "fullname" . }}
+    secretName: {{ template "fullname" . }}-tls
+{{- end }}
   rules:
   - host: {{ template "hostname" . }}
     http:

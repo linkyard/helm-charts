@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: JIRA_URL
-          value: https://{{ template "hostname" . }}/
+          value: {{ if .Values.ingress.ssl }}https://{{ else }}http://{{ end}}{{ template "hostname" . }}/
         - name: JIRA_TITLE
           value: {{ .Values.title | quote }}
         - name: LICENSE
