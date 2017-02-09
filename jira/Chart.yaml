@@ -1,12 +1,10 @@
-name: jira-sd
-version: 0.5.8
-description: Atlassian JIRA with Service Desk running on persistent storage with Postgres.
+name: jira
+version: 0.6.0
+description: Atlassian JIRA with Postgres as the datastore.
 keywords:
   - Atlassian
   - JIRA
-  - Service Desk
 home: https://github.com/linkyard/helm-charts
 maintainers:
   - name: Mario Siegenthaler
     email: mario.siegenthaler@linkyard.ch
-engine: gotpl

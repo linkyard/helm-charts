@@ -40,10 +40,10 @@ mail:
 
 
 # Version of Jira Service Desk.
-# see: https://hub.docker.com/r/cptactionhank/atlassian-jira-service-desk/tags/
-jiraVersion: 3.3.0
+# see: https://hub.docker.com/r/cptactionhank/atlassian-jira/tags/
+jiraVersion: 7.3.1
 # Docker image to use
-image: cptactionhank/atlassian-jira-service-desk
+image: cptactionhank/atlassian-jira
 
 ## Specify a imagePullPolicy
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
