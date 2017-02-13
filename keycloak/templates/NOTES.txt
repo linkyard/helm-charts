@@ -4,4 +4,4 @@ Keycloak is now available at https://{{ template "hostname" . }}
 
 The administrator account is
   Username: admin
-  Password: {{ default (cat .Release.Name .Chart.Name | sha256sum) .Values.adminPassword}}
+  Password: echo $(kubectl --namespace {{ .Release.Namespace }} get secret {{ template "fullname" . }} -o jsonpath='{.data.admin-password}' | base64 -D)
