@@ -4,4 +4,4 @@ JIRA Service Desk is now available at https://{{ template "hostname" . }}.
 
 You may log in as administrator with:
   Username: {{ .Values.adminUser }}
-  Password: {{ default (cat .Release.Name .Chart.Name | sha256sum) .Values.adminPassword }}
+  Password: echo $(kubectl --namespace {{ .Release.Namespace }} get secret {{ template "fullname" . }} -o jsonpath='{.data.adminPassword}' | base64 -D)

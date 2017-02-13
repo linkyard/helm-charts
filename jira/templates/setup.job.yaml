@@ -2,14 +2,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ template "fullname" . }}setup
+  name: {{ template "fullname" . }}-setup
   labels:
-    job: {{ template "fullname" . }}setup
+    job: {{ template "fullname" . }}-setup
 {{ include "labels" . | indent 4 }}
 spec:
   template:
     metadata:
-      name: {{ template "fullname" . }}setup
+      name: {{ template "fullname" . }}-setup
       labels:
 {{ include "template.labels" . | indent 8 }}
     spec:

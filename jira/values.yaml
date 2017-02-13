@@ -4,7 +4,6 @@ title: Test Jira
 # User that is the administrator for JIRA
 adminUser: admin
 adminDisplayName: Administrator
-#adminPassword:
 adminEmail: noreply@dev.null
 
 runSetup: true
