@@ -1,0 +1,9 @@
+PhantomJS WebDriver is now running at
+
+  {{ template "fullname" . }}.{{ .Release.Namespace }}:4444
+
+inside your cluster.
+
+To access from your machine use the following command. The WebDriver is then available at localhost:4444
+
+  kubectl port-forward --namespace {{ .Release.Namespace }} $(kubectl get pods --namespace {{ .Release.Namespace }} -l "app={{ .Release.Name }},component={{ default .Chart.Name .Values.nameOverride }}" -o jsonpath="{.items[0].metadata.name}") 4444:4444
