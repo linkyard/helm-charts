@@ -69,7 +69,7 @@ resources:
 # Database configuration
 postgres:
   nameOverride: jira-pg
-  version: 9.3.15
+  version: 9.5.7
   persistence:
     enabled: false
     size: 1Gi
