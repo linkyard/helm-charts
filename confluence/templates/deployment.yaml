@@ -33,7 +33,7 @@ spec:
         - name: X_PATH
           value: /
         - name: CATALINA_OPTS
-          value: "-Xmx{{ .Values.maxHeap }}"
+          value: "-Xms128m -Xmx{{ .Values.maxHeap }}"
         ports:
         - name: http
           containerPort: 8090

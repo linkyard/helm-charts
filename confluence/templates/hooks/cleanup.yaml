@@ -22,6 +22,4 @@ spec:
         - -c
         - |
           kubectl delete secret {{ template "fullname" . }}; \
-          kubectl delete job {{ template "fullname" . }}-setup; \
-          kubectl delete job {{ template "fullname" . }}-cleanup; \
           true

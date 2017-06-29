@@ -1,5 +1,5 @@
 name: confluence
-version: 0.0.2
+version: 0.0.3
 description: Atlassian Confluence with Postgres as the datastore.
 keywords:
   - Atlassian
