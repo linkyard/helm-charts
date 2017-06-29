@@ -19,7 +19,7 @@ ingress:
   #Only used if hostname is not set. Suffix for the release name to find the hostname
   hostbase: test.linkyard.ch
 
-#License key for JIA. Optional, a trial license will be fetched if not specified
+#License key for JIRA. Optional, a trial license will be fetched if not specified
 #license:
 
 #Used to get trial licenses. Please specify
@@ -38,11 +38,13 @@ mail:
   #password:
 
 
-# Version of Jira Service Desk.
+# Version of JIRA.
 # see: https://hub.docker.com/r/cptactionhank/atlassian-jira/tags/
-jiraVersion: 7.3.1
+jiraVersion: 7.3.6
 # Docker image to use
 image: cptactionhank/atlassian-jira
+# image: cptactionhank/atlassian-jira-software
+#image: cptactionhank/atlassian-jira-service-desk
 
 ## Specify a imagePullPolicy
 ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
