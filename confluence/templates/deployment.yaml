@@ -1,0 +1,68 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+{{ include "labels" . | indent 4 }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+{{ include "template.labels" . | indent 8 }}
+      annotations:
+        # Wait until postgres is ready before starting..
+        pod.beta.kubernetes.io/init-containers: '[
+            {
+                "name": "wait-for-postgres",
+                "image": "jwilder/dockerize:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "command": ["dockerize", "-wait", "tcp://{{ template "postgres.fullname" . }}:5432", "-timeout", "30s"]
+            }
+        ]'
+    spec:
+      containers:
+      - name: confluence
+        image: {{ .Values.image }}:{{ .Values.confluenceVersion }}
+        imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        env:
+        - name: X_PROXY_SCHEME
+          value: {{ if .Values.ingress.ssl }}https{{ else }}http{{ end }}
+        - name: X_PROXY_PORT
+          value: "{{ if .Values.ingress.ssl }}443{{ else }}80{{ end }}"
+        - name: X_PATH
+          value: /
+        - name: CATALINA_OPTS
+          value: "-Xmx{{ .Values.maxHeap }}"
+        ports:
+        - name: http
+          containerPort: 8090
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 8090
+          initialDelaySeconds: 300
+          timeoutSeconds: 120
+          periodSeconds: 30
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 8090
+          periodSeconds: 5
+          initialDelaySeconds: 10
+          failureThreshold: 30
+          timeoutSeconds: 60
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+        volumeMounts:
+        - name: data
+          mountPath: /var/atlassian/confluence
+      volumes:
+      - name: data
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ template "fullname" . }}
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}

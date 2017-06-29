@@ -1,0 +1,7 @@
+{{- if .Values.ingress.enabled }}
+Confluence is now available at https://{{ template "hostname" . }}.
+{{- end }}
+
+You may log in as administrator with:
+  Username: {{ .Values.adminUser }}
+  Password: echo $(kubectl --namespace {{ .Release.Namespace }} get secret {{ template "fullname" . }} -o jsonpath='{.data.adminPassword}' | base64 -D)
