@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: keycloak:{{ .Values.version }}
+        image: jboss/keycloak:{{ .Values.version }}
         imagePullPolicy: Always
         env:
         - name: POSTGRES_PORT_5432_TCP_ADDR

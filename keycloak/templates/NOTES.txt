@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled }}
-Keycloak is now available at https://{{ template "hostname" . }}
+Keycloak {{ .Values.version }} is now available at https://{{ template "hostname" . }}
 {{- end }}
 
 The administrator account is
