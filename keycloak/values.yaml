@@ -1,5 +1,8 @@
-# Password for the keycloak admin user
+# Password for the keycloak admin user (default: generated)
 #adminPassword:
+
+# Version of keycloak. See https://hub.docker.com/r/jboss/keycloak/tags/
+version: 3.2.0.Final
 
 ingress:
   #Set to true to create an ingress
@@ -11,7 +14,7 @@ ingress:
 
 postgres:
   nameOverride: keycloak-pg
-  #Set a database password
+  #Set a database password (default: generated)
   password:
   #Database persistence settings
   persistence:
