@@ -54,7 +54,6 @@ imagePullPolicy: IfNotPresent
 
 persistence:
   enabled: false
-  storageClass: local
   size: 5Gi
 
 # Maximum Java Heap Space Memory (used with -Xmx)

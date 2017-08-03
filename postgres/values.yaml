@@ -5,7 +5,6 @@ version: 9.6.3
 persistence:
   # Use false to just use an empty dir
   enabled: true
-  storageClass: local
   size: 5Gi
 
 ## Configure resource requests and limits
