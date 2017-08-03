@@ -27,12 +27,6 @@ run:
     helm init -c
     helm repo add linkyard http://charts.linkyard.ch
 
-    chart=../source-repo/postgres/
-    echo "  Processing ${chart}..."
-    rm -rf ${chart}/charts
-    helm dependency update $chart
-    helm package $chart
-
     for chart in ../source-repo/*/; do
       echo "  Processing ${chart}..."
       rm -rf ${chart}/charts
