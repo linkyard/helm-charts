@@ -27,19 +27,17 @@ run:
     helm init -c
     helm repo add linkyard http://charts.linkyard.ch
 
-    function build() {
-      echo "  Processing $1..."
-      rm -rf $1/charts
-      helm dependency update $1
-      helm package $1
-    }
+    chart=../source-repo/postgres/
+    echo "  Processing ${chart}..."
+    rm -rf ${chart}/charts
+    helm dependency update $chart
+    helm package $chart
 
-    #Build these first
-    build postgres
-
-    #And now the rest... (and build twice the 'firsts')
     for chart in ../source-repo/*/; do
-      build $chart
+      echo "  Processing ${chart}..."
+      rm -rf ${chart}/charts
+      helm dependency update $chart
+      helm package $chart
     done
 
     echo "Indexing helm charts..."
