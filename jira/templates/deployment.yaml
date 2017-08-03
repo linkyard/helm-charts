@@ -21,6 +21,8 @@ spec:
             }
         ]'
     spec:
+      securityContext:
+        fsGroup: 1
       containers:
       - name: jira
         image: {{ .Values.image }}:{{ .Values.jiraVersion }}

@@ -1,5 +1,5 @@
 name: jira
-version: 0.7.5
+version: 0.7.6
 description: Atlassian JIRA with Postgres as the datastore.
 keywords:
   - Atlassian
