@@ -14,6 +14,7 @@ spec:
 {{ include "labels" . | indent 8 }}
     spec:
       restartPolicy: OnFailure
+      serviceAccountName: {{ template "fullname" . }}-jobs
       containers:
       - name: post-install-job
         image: "lachlanevenson/k8s-kubectl:v1.7.3"

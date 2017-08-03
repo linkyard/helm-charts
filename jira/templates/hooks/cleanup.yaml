@@ -13,6 +13,7 @@ spec:
       labels:
 {{ include "labels" . | indent 8 }}
     spec:
+      serviceAccountName: {{ template "fullname" . }}-jobs
       restartPolicy: OnFailure
       containers:
       - name: post-install-job
