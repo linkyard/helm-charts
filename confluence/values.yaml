@@ -40,7 +40,7 @@ mail:
 
 # Version of Confluence
 # see: https://hub.docker.com/r/cptactionhank/atlassian-confluence/tags/
-confluenceVersion: 6.2.3
+confluenceVersion: 6.3.1
 # Docker image to use
 image: cptactionhank/atlassian-confluence
 
@@ -52,7 +52,6 @@ imagePullPolicy: IfNotPresent
 
 persistence:
   enabled: false
-  storageClass: local
   size: 5Gi
 
 # Maximum Java Heap Space Memory (used with -Xmx)

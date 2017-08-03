@@ -40,7 +40,7 @@ mail:
 
 # Version of JIRA.
 # see: https://hub.docker.com/r/cptactionhank/atlassian-jira/tags/
-jiraVersion: 7.3.6
+jiraVersion: 7.4.2
 # Docker image to use
 image: cptactionhank/atlassian-jira
 # image: cptactionhank/atlassian-jira-software
