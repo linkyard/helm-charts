@@ -68,7 +68,6 @@ resources:
 # Database configuration
 postgres:
   nameOverride: pg-confluence
-  version: 9.5.7
   persistence:
     enabled: false
     size: 1Gi
