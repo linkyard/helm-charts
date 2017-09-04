@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - {{ template "hostname" . }}
-    secretName: {{ template "fullname" . }}
+    secretName: {{ template "fullname" . }}-tls
   rules:
   - host: {{ template "hostname" . }}
     http:
