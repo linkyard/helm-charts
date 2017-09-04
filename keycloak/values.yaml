@@ -19,5 +19,4 @@ postgres:
   #Database persistence settings
   persistence:
     enabled: false
-    storageClass: local
     size: 2Gi
