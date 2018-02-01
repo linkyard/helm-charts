@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+{{ include "labels" . | indent 4 }}
+spec:
+  selector:
+{{ include "template.labels" . | indent 4 }}
+  ports:
+  - name: webdriver
+    port: 4444
+    targetPort: webdriver

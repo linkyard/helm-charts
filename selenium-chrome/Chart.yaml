@@ -1,0 +1,4 @@
+apiVersion: v1
+name: selenium-chrome
+description: Selenium Standalone Server with Chrome for executing browser-based tests and taking screenshots.
+version: 0.1.0
