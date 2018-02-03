@@ -20,15 +20,22 @@ spec:
           containerPort: 4444
         livenessProbe:
           httpGet:
-            path: /status
+            path: /
             port: 4444
         readinessProbe:
           httpGet:
-            path: /status
+            path: /
             port: 4444
+        volumeMounts:
+        - mountPath: /dev/shm
+          name: dshm
         resources:
 {{ toYaml .Values.resources | indent 10 }}
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
     {{- end }}
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
