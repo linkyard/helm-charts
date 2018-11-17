@@ -36,8 +36,8 @@ run:
     done
 
     echo " Processing postal..."
-    cp -r ../source-repo-postal/helm/postal postal
-    helm package postal
+    helm dependency update ../source-repo-postal/helm/postal
+    helm package ../source-repo-postal/helm/postal
 
     echo "Indexing helm charts..."
     helm repo index . --url http://charts.linkyard.ch
