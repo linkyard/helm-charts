@@ -1,4 +1,0 @@
-apiVersion: v1
-name: phantomjs-webdriver
-description: PhantomJS with webdriver support for executing browser-based tests and taking screenshots.
-version: 0.1.0

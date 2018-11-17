@@ -1,7 +1,0 @@
-{{- if .Values.ingress.enabled }}
-Keycloak {{ .Values.version }} is now available at https://{{ template "hostname" . }}
-{{- end }}
-
-The administrator account is
-  Username: admin
-  Password: echo $(kubectl --namespace {{ .Release.Namespace }} get secret {{ template "fullname" . }} -o jsonpath='{.data.admin-password}' | base64 -D)

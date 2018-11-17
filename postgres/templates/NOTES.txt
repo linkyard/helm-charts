@@ -1,5 +1,0 @@
-Use the following credentials to log in:
-  User:     postgres
-  Password: echo $(kubectl --namespace {{ .Release.Namespace }} get secret {{ template "fullname" . }} -o jsonpath='{.data.password}' | base64 -D)
-
-The database is available as the service {{ template "fullname" . }}

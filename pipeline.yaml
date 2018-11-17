@@ -7,6 +7,14 @@ resources:
     uri: git@github.com:linkyard/helm-charts.git
     branch: master
     private_key: {{private-repo-key}}
+- name: source-repo-postal
+  type: git
+  source:
+    uri: git@github.com:linkyard/postal-kubernetes.git
+    branch: master
+    private_key: {{postal-private-repo-key}}
+    paths:
+    - helm/postal
 
 - name: chart-repo
   type: git
@@ -19,6 +27,8 @@ jobs:
 - name: package
   plan:
   - get: source-repo
+    trigger: true
+  - get: source-repo-postal
     trigger: true
   - get: chart-repo
   - task: package

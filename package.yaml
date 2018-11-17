@@ -9,6 +9,7 @@ image_resource:
 
 inputs:
 - name: source-repo
+- name: source-repo-postal
 - name: chart-repo
 
 outputs:
@@ -33,6 +34,10 @@ run:
       helm dependency update $chart
       helm package $chart
     done
+
+    echo " Processing postal..."
+    cp -r ../source-repo-postal/helm/postal postal
+    helm package postal
 
     echo "Indexing helm charts..."
     helm repo index . --url http://charts.linkyard.ch
