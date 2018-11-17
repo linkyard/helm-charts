@@ -1,7 +1,0 @@
-dependencies:
-- name: mariadb
-  version: 5.2.3
-  repository: https://kubernetes-charts.storage.googleapis.com/
-- name: rabbitmq-ha
-  version: 1.12.1
-  repository: https://kubernetes-charts.storage.googleapis.com/
