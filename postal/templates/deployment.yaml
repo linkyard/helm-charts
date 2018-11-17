@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "postal.fullname" . }}
+  labels:
+    app: {{ template "postal.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    component: postal
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "postal.name" . }}
+      component: postal
+  # at the moment, we only support one replica
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ template "postal.name" . }}
+        component: postal
+    spec:
+      initContainers:
+      - name: wait-for-mariadb
+        image: "{{ .Values.postal.image }}:{{ .Values.postal.imageTag }}"
+        args: wait-for-mariadb
+        imagePullPolicy: "{{ .Values.postal.imagePullPolicy }}"
+        env:
+        - name: MARIADB_HOST
+          value: {{ template "postal.mariadb.fullname" . }}
+        - name: MARIADB_USER
+          value: root
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: mariadbPassword
+      - name: wait-for-rabbitmq
+        image: "busybox"
+        command:
+        - sh
+        - -c
+        - |
+            BASIC_AUTH=$(echo -n "management:${RABBITMQ_MANAGEMENT_PASSWORD}" | base64 | tr -d '\ \n')
+            while(true); do
+              wget -q --header "Authorization: Basic ${BASIC_AUTH}" http://${RABBITMQ_HOST}:15672/api/healthchecks/node -O - | grep -qF '{"status":"ok"}'
+              if [ $? -eq 0 ]; then exit 0; fi
+              echo "rabbitmq ${RABBITMQ_HOST} is not ready"
+              sleep 1
+            done
+        env:
+        - name: RABBITMQ_HOST
+          value: {{ template "postal.rabbitmq.fullname" . }}
+        - name: RABBITMQ_MANAGEMENT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: rabbitMqManagementPassword
+      containers:
+      - name: postal
+        image: "{{ .Values.postal.image }}:{{ .Values.postal.imageTag }}"
+        imagePullPolicy: "{{ .Values.postal.imagePullPolicy }}"
+        env:
+        - name: MARIADB_HOST
+          value: {{ template "postal.mariadb.fullname" . }}
+        - name: MARIADB_USER
+          value: root
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: mariadbPassword
+        - name: RABBITMQ_HOST
+          value: {{ template "postal.rabbitmq.fullname" . }}
+        - name: RABBITMQ_USER
+          value: {{ .Values.rabbitmq.rabbitmqUsername }}
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: rabbitMqPassword
+        - name: RAILS_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: railsSecretKey
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: smtpPassword
+        - name: SIGNING_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: signingKey
+        - name: LETS_ENCRYPT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "postal.fullname" . }}
+              key: letsEncryptKey      
+        - name: USER_CONFIG_PATH
+          value: /var/run/postal-config/postalConfig
+        ports:
+        - name: web
+          containerPort: 5000
+        - name: smtp
+          containerPort: 25
+        volumeMounts:
+        - name: config
+          mountPath: /var/run/postal-config
+        - name: smtp-secret
+          mountPath: /var/run/postal-smtp-secret
+      volumes:
+      - name: config
+        configMap:
+          name: {{ template "postal.fullname" . }}
+      - name: smtp-secret
+        secret:
+          {{- if .Values.postal.smtp.existingTlsSecret }}
+          secretName: {{ .Values.postal.smtp.existingTlsSecret }}
+          {{- else }}
+          secretName: {{ template "postal.fullname" . }}-smtp-tls
+          {{- end }}

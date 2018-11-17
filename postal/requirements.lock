@@ -1,0 +1,9 @@
+dependencies:
+- name: mariadb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 5.2.3
+- name: rabbitmq-ha
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.12.1
+digest: sha256:32b3feb16e580d85589dfdb3bbcba50bfdd9d27fb2c9c391b0321a87b7972504
+generated: 2018-11-15T16:16:54.573133+01:00

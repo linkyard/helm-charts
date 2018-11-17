@@ -1,0 +1,33 @@
+{{- if .Values.postal.web.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "postal.fullname" . }}-web
+  labels:
+    app: {{ template "postal.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    component: postal
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.postal.web.ingress.ingressClass }}
+spec:
+  {{- if .Values.postal.web.ingress.tlsEnabled }}
+  tls:
+  - hosts:
+    - {{ required "postal.web.ingress.hostName is required " .Values.postal.web.ingress.hostName }}
+    {{- if .Values.postal.web.existingTlsSecret }}
+    secretName: {{ .Values.postal.web.existingTlsSecret }}
+    {{- else }}
+    secretName: {{ template "postal.fullname" . }}-web-tls
+    {{- end }}
+  {{- end }}
+  rules:
+  - host: {{ required "postal.web.ingress.hostName is required " .Values.postal.web.ingress.hostName }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "postal.fullname" . }}-web
+          servicePort: web
+{{- end }}

@@ -1,0 +1,26 @@
+{{- if .Values.postal.smtp.certManager.enabled }}
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: {{ template "postal.fullname" . }}-smtp
+  labels:
+    app: {{ template "postal.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    component: postal
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  secretName: {{ template "postal.fullname" . }}-smtp-tls
+  issuerRef:
+    name: {{ required "postal.smtp.certManager.issuerName is required" .Values.postal.smtp.certManager.issuerName }}
+    kind: {{ required "postal.smtp.certManager.issuerKind is required" .Values.postal.smtp.certManager.issuerKind }}
+  commonName: {{ required "postal.smtp.hostName is required" .Values.postal.smtp.hostName }}
+  dnsNames:
+  - {{ required "postal.smtp.hostName is required" .Values.postal.smtp.hostName }}
+  acme:
+    config:
+    - http01:
+        ingressClass: {{ .Values.postal.smtp.certManager.ingressClass }}
+      domains:
+      - {{ required "postal.smtp.hostName is required" .Values.postal.smtp.hostName }}
+{{- end }}
