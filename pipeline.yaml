@@ -3,25 +3,30 @@
 resources:
 - name: source-repo
   type: git
+  check_every: 24h
+  webhook_token: ((repo.webhook-token))
   source:
     uri: git@github.com:linkyard/helm-charts.git
     branch: master
-    private_key: {{private-repo-key}}
+    private_key: ((repo.private-key))
 - name: source-repo-postal
   type: git
+  check_every: 24h
+  webhook_token: ((postal-repopo.webhook-token))
   source:
     uri: git@github.com:linkyard/postal-kubernetes.git
     branch: master
-    private_key: {{postal-private-repo-key}}
+    private_key: ((postal-repo.private-key))
     paths:
     - helm/postal
 
 - name: chart-repo
   type: git
+  check_every: 24h
   source:
     uri: git@github.com:linkyard/helm-charts.git
     branch: gh-pages
-    private_key: {{private-repo-key}}
+    private_key: ((repo.private-key))
 
 jobs:
 - name: package
